@@ -4,7 +4,7 @@ module.exports = {
     async createUser(userData) {
         try{
             let{fullName,emailValue,password,role}=userData;
-            const isUserExist=await User.findOne({email:emailValue})
+            const isUserExist=await User.findOne({email:emailValue});
 
             if(isUserExist){
                 throw new error("User already exist");
@@ -24,4 +24,17 @@ module.exports = {
             throw new Error(error.message);
         }
 },
+
+async getUserByEmail(email){
+    try {
+        const user=await User.findOne({email:email});
+        if(!user){
+            throw new Error("User not found");
+        }
+        return user;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 };
