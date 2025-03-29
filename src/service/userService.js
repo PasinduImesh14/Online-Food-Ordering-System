@@ -60,4 +60,13 @@ async findUserProfileByJwt(jwt){
     }
 }
 
+async findAllUsers(){
+    try {
+        const users=await User.find();
+        return users;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+},
+
 };
