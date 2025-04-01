@@ -8,7 +8,8 @@ module.exports = {
             const isUserExist=await User.findOne({email:emailValue});
 
             if(isUserExist){
-                throw new error("User already exist");
+                throw new Error("User already exist");
+
             }
 
             password=await bcrypt.hash(password,8);
@@ -58,7 +59,7 @@ async findUserProfileByJwt(jwt){
     } catch (error) {
         throw new Error(error.message);
     }
-}
+},
 
 async findAllUsers(){
     try {
