@@ -22,7 +22,7 @@ const login = async (req,res)=>{
             return res.status(401).send({message:"Invalid Credentials"});
         }
         const jwt=generateToken(user._id);
-        return res.status(200).send({jwt,message:"Login Successful"});
+        return res.status(200).send({jwt,message:"Login Successful", user});
     } catch (error) {
         return res.status(500).send({error:error.message});
     }

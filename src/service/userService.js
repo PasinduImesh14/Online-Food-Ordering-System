@@ -8,7 +8,7 @@ module.exports = {
             const isUserExist=await User.findOne({email:emailValue});
 
             if(isUserExist){
-                throw new Error("User already exist");
+                throw new Error("User already exist with this email", emailValue);
 
             }
 
