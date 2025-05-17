@@ -65,7 +65,7 @@ async getAllRestaurants(){
 
 },
 
-async getRestaurantByUserId(userId){
+async getRestaurantsByUserId(userId){
     try {
         const restaurant = await Restaurant.findOne({owner:userId}).populate("owner").populate("address"); 
         if (!restaurant) {
