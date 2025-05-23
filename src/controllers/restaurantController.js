@@ -36,9 +36,35 @@ updateRestaurantStatus: async (req, res) => {
         console.log("restaurant id", id);
         res.status(200).json(restaurant);
     } catch (error) {
-        if(rror instanceof Error){
-            res.status(400).json({error: "Internal server error"});
+        if(error instanceof Error){
+            res.status(400).json({error: error.message});
+        }else{
+            res.status(500).json({error: "Internal server error"});
         }
+    }
+},
+
+findRestaurantByUserId: async (req, res) => {
+    try {
+        const user = req.user;
+        const restaurant = await restaurantService.getRestaurantsByUserId(user._id);
+        res.status(200).json(restaurant);
+    } catch (error) {
+        if(error instanceof Error){
+            res.status(400).json({error: error.message});
+    }else{
+            res.status(500).json({error: "Internal server error"});
+        }
+    }
+},
+
+findRestaurantByName: async (req, res) => {
+    try {
+        const {keyword} = req.query;
+        const restaurants = await restaurantService.searchRestaurant(keyword);
+        res.status(200).json(restaurants);
+    } catch (error) {
+        res.status(500).json({error: "Internal server error"});
     }
 },
 
