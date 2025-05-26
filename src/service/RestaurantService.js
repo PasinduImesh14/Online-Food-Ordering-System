@@ -94,7 +94,7 @@ async searchRestaurant(keyword){
     }
 },
 //check this later
-async addToFavourite(restaurantId, user) {
+async addToFavourites(restaurantId, user) {
     try {
         const restaurant = this.findRestaurantById(restaurantId);
 

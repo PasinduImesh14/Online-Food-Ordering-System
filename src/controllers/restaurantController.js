@@ -1,5 +1,6 @@
 const Restaurant = require("../models/restaurant.model");
-const restaurantService = require("../service/RestaurantService");
+const RestaurantService = require("../service/restaurantService");
+const restaurantService = require("../service/restaurantService");
 
 module.exports = {
 
@@ -91,13 +92,19 @@ findResttaurantById: async (req, res) => {
 }
 },
 
-addToFavourite: async (req, res) => {
+addToFavourites: async (req, res) => {
     try {
-        const {jwt} = req.headers;
         const {id} = req.params;
+        const user = req.user;
+        const restaurant = await restaurantService.addToFavourites(id, user);
+        res.status(200).json(restaurant);
         
     } catch (error) {
-        
+        if (error instanceof Error){
+            res.status(400).json({error: error.message});
+        } else {
+            res.status(500).json({error: "Internal server error"});
+        }
     }
 }
 
