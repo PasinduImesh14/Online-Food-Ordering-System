@@ -1,4 +1,4 @@
-const { searchFood } = require('../service/foodService');
+const { searchFood, updateAvailabilityStatus } = require('../service/foodService');
 const foodService = require('../services/foodService');
 const restaurantService = require('../services/restaurantService');
 const userService = require('../services/userService');
@@ -30,4 +30,50 @@ getMenuItemByRestaurantId: async (req, res) => {
     }
 },
 
-}
+//Admin controller
+
+async createItem(req, res) {
+    try {
+        const item = req.body;
+        const user = req.user;
+        const restaurant = await restaurantService.findRestaurantById(item.restaurantId);
+        const menuItem = await foodService.createFood(item, restaurant);
+        res.status(201).json(menuItem);
+    } catch (error) {
+        if (error instanceof Error){
+            res.status(400).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: "Internal server error" });
+        }
+    }
+},
+
+async deleteItem(req, res){
+    try {
+        const {id} = req.params;
+        const user = req.user;
+        await foodService.deleteFood(id);
+        res.status(200).json({ message: "Menu item deleted successfully" });
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(400).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: "Internal server error" });
+        }
+    }
+},
+
+async updateAvailabilityStatus(req, res) {
+    try {
+        const {id} = req.params;
+        const menuItem = await foodService.updateAvailabilityStatus(id);
+        res.status(200).json(menuItem);
+    } catch (error) {
+        if( error instanceof Error) {
+            res.status(400).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: "Internal server error" });
+        }
+    }
+},
+};
