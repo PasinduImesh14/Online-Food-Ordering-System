@@ -1,7 +1,7 @@
-const { searchFood, updateAvailabilityStatus } = require('../service/foodService');
-const foodService = require('../services/foodService');
-const restaurantService = require('../services/restaurantService');
-const userService = require('../services/userService');
+const { searchFood, updateAvailabilityStatus } = require('../service/food.service');
+const foodService = require('../service/foodService');
+const restaurantService = require('../service/restaurantService');
+const userService = require('../service/userService');
 
 module.exports = {
 

@@ -1,6 +1,6 @@
-const { addItemToCart, updateCartItemQuantity, removeItemFromCart, calculateCartTotals, clearCart } = require("../service/cartService");
-const cartService = require("../services/cart.service");
-const userService = require("../services/user.service");
+const { addItemToCart, updateCartItemQuantity, removeItemFromCart, calculateCartTotals, clearCart } = require("../service/cart.service");
+const cartService = require("../service/cart.service");
+const userService = require("../service/user.service");
 
 module.exports = {
     addItemToCart: async (req, res) => {

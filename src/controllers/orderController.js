@@ -1,5 +1,5 @@
-const orderService = require("../services/order.service.js");
-const userService = require("../services/user.service.js");
+const orderService = require("../service/order.service.js");
+const userService = require("../service/user.service.js");
 
 //user order controller
 module.exports = {
