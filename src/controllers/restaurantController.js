@@ -1,5 +1,5 @@
 const Restaurant = require("../models/restaurant.model");
-const restaurantService = require("../service/restaurantService");
+const restaurantService = require("../service/RestaurantService");
 
 module.exports = {
 
