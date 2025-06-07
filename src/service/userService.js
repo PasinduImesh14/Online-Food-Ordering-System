@@ -41,7 +41,7 @@ async getUserByEmail(email){
 
 async findUserById(userId){
     try {
-        const user= await User.findById(userId).populate("addresses");
+        const user= await User.findById(userId);
         if(!user){
             throw new Error("User not found with id - ",userId);
         }

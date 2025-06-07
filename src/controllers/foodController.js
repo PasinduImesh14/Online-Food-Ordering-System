@@ -1,6 +1,6 @@
 const { searchFood, updateAvailabilityStatus } = require('../service/food.service');
 const foodService = require('../service/foodService');
-const restaurantService = require('../service/restaurantService');
+const restaurantService = require('../service/RestaurantService');
 const userService = require('../service/userService');
 
 module.exports = {
