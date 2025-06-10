@@ -16,4 +16,7 @@ app.use("/auth",authRoutes);
 const userRoutes = require('./routes/userRoutes.js');
 app.use("/api/users", userRoutes);
 
+const restaurantRoutes = require('./routes/restaurantRoutes.js');
+app.use("/api/restaurants", restaurantRoutes);
+
 module.exports = {app};
