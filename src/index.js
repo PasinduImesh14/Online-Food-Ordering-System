@@ -19,4 +19,7 @@ app.use("/api/users", userRoutes);
 const restaurantRoutes = require('./routes/restaurantRoutes.js');
 app.use("/api/restaurants", restaurantRoutes);
 
+const orderRoutes = require('./routes/orderRoutes.js');
+app.use("/api/orders", orderRoutes);
+
 module.exports = {app};
